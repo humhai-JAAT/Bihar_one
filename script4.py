@@ -492,9 +492,9 @@ elif use_cases_btn:
 if "page" not in st.session_state:
     st.session_state.page = "Simulator"
 
-    page = st.session_state.page
+page = st.session_state.page
 
-    st.markdown("---")
+st.markdown("---")
 
 if page == "Simulator":
     st.markdown('<div class="info-card">'
