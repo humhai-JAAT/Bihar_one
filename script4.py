@@ -492,9 +492,9 @@ elif use_cases_btn:
 if "page" not in st.session_state:
     st.session_state.page = "Simulator"
 
-page = st.session_state.page
+    page = st.session_state.page
 
-st.markdown("---")
+    st.markdown("---")
 
 if page == "Simulator":
     st.markdown('<div class="info-card">'
@@ -593,7 +593,6 @@ if page == "Simulator":
         decision = "Create New Golden Record"
 
     st.subheader(f"Decision: {decision}")
-
 
 elif page == "Reference":
     st.markdown('<div class="info-card">'
@@ -1013,7 +1012,6 @@ The GRCS framework ensures that:
 **The Golden Record is therefore a governed enterprise scoring engine — not a heuristic matching system.**
 """)
 
-
 elif page == "Weight":
     st.markdown('<div class="info-card"><h1 style="color: white; margin: 0;">Weight Calculation</h1>'
     '</div>', unsafe_allow_html=True)
@@ -1143,7 +1141,6 @@ elif page == "Weight":
     # Documentation below calculator
     st.markdown("---")
    
-
 elif page == "LUSR":
     st.markdown('<div class="info-card"><h1 style="color: white; margin: 0;">LUSR Calculation</h1>'
     '</div>', unsafe_allow_html=True)
@@ -1204,7 +1201,6 @@ elif page == "LUSR":
     st.dataframe(df_table_7, width='stretch', hide_index=True)
     
     # Download documentation
-
 
 elif page == "Use Cases":
 
@@ -1693,6 +1689,4 @@ Address is a dynamic attribute and does not affect identity anchors.
 **Explanation**
 
 Assets and service records cannot replace identity anchors.
-
 """)
-
