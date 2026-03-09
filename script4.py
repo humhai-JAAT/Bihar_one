@@ -655,67 +655,6 @@ elif page == "Reference":
         mime="text/csv"
     )
 
-
-elif page == "Reference":
-    st.markdown('<div class="info-card">'
-    '<h1 style="color: white; margin: 0;">GRCS Reference Table</h1>'
-    '<p style="color: rgba(255,255,255,0.9); margin-top: 0.5rem;"></div>', unsafe_allow_html=True)
-    
-    st.markdown("### Complete GRCS Attribute Reference")
-
-    reference_data = [
-        {"S.No": 1, "Attribute": "Aadhaar", "Weight (%)": 7.111274871, "Match Type": "Deterministic", "Enterprise Rule": "UIDAI biometric verified"},
-        {"S.No": 2, "Attribute": "Name", "Weight (%)": 4.605747973, "Match Type": "Fuzzy + Phonetic", "Enterprise Rule": "UIDAI > Civil Registry precedence"},
-        {"S.No": 3, "Attribute": "Date of Birth", "Weight (%)": 5.600589536, "Match Type": "Exact > Year", "Enterprise Rule": "Civil Registry override"},
-        {"S.No": 4, "Attribute": "Mobile Number", "Weight (%)": 4.532056006, "Match Type": "OTP Verified", "Enterprise Rule": "Aadhaar seeded + CBS timestamp"},
-        {"S.No": 5, "Attribute": "Gender", "Weight (%)": 4.679439941, "Match Type": "Exact", "Enterprise Rule": "Legal identity anchor"},
-        {"S.No": 6, "Attribute": "Father's Name", "Weight (%)": 5.011053795, "Match Type": "Fuzzy", "Enterprise Rule": "Civil Registry priority"},
-        {"S.No": 7, "Attribute": "Mother's Name", "Weight (%)": 5.011053795, "Match Type": "Fuzzy", "Enterprise Rule": "Civil Registry validated"},
-        {"S.No": 8, "Attribute": "Permanent Address", "Weight (%)": 4.56890199, "Match Type": "Geo-normalized", "Enterprise Rule": "UIDAI > Land Registry"},
-        {"S.No": 9, "Attribute": "Correspondence Address", "Weight (%)": 3.463522476, "Match Type": "Latest Timestamp", "Enterprise Rule": "CBS latest update"},
-        {"S.No": 10, "Attribute": "Caste", "Weight (%)": 5.342667649, "Match Type": "Certificate Verified", "Enterprise Rule": "RTPS validated"},
-        {"S.No": 11, "Attribute": "Marital Status", "Weight (%)": 4.237288136, "Match Type": "Registry Preferred", "Enterprise Rule": "Marriage Registry > Self"},
-        {"S.No": 12, "Attribute": "Education Status", "Weight (%)": 4.016212233, "Match Type": "Dept Certified", "Enterprise Rule": "Education DB"},
-        {"S.No": 13, "Attribute": "Employment Status", "Weight (%)": 3.831982314, "Match Type": "Statutory", "Enterprise Rule": "Labour Dept verified"},
-        {"S.No": 14, "Attribute": "Ration Card Number", "Weight (%)": 5.490051584, "Match Type": "Deterministic", "Enterprise Rule": "PDS Household anchor"},
-        {"S.No": 15, "Attribute": "Ration Card Type", "Weight (%)": 4.089042, "Match Type": "Exact", "Enterprise Rule": "Welfare classification"},
-        {"S.No": 16, "Attribute": "PAN ID", "Weight (%)": 6.632277082, "Match Type": "Deterministic", "Enterprise Rule": "Income Tax authority"},
-        {"S.No": 17, "Attribute": "Bank Account", "Weight (%)": 5.711127487, "Match Type": "Masked Deterministic", "Enterprise Rule": "CBS source-of-origin"},
-        {"S.No": 18, "Attribute": "Land Ownership", "Weight (%)": 6.042741341, "Match Type": "Legal Title", "Enterprise Rule": "Land Registry override"},
-        {"S.No": 19, "Attribute": "Motor Ownership", "Weight (%)": 5.416359617, "Match Type": "Registration Match", "Enterprise Rule": "VAHAN verified"},
-        {"S.No": 20, "Attribute": "Nationality", "Weight (%)": 4.605747973, "Match Type": "Legal", "Enterprise Rule": "Civil Registry"}
-    ]
-
-    df = pd.DataFrame(reference_data)
-    display_df = df.copy()
-    display_df["Weight (%)"] = display_df["Weight (%)"].astype(str) + "%"
-    
-    # Display the table
-    st.dataframe(display_df, width='stretch', hide_index=True)
-    
-    # Show some statistics
-    st.markdown("### Key Insights")
-    col1, col2, col3, col4 = st.columns(4)
-    with col1:
-        st.metric("Total Attributes", len(df))
-    with col2:
-        st.metric("Total Weight", f"{df['Weight (%)'].sum():.2f}%")
-    with col3:
-        st.metric("Max Weight Attribute", df.loc[df['Weight (%)'].idxmax(), 'Attribute'])
-    with col4:
-        st.metric("Avg Weight per Attribute", f"{df['Weight (%)'].mean():.2f}%")
-    
-    # Download option
-    st.markdown("### Download Data")
-    csv = display_df.to_csv(index=False)
-    st.download_button(
-        label="Download as CSV",
-        data=csv,
-        file_name="GRCS_Reference.csv",
-        mime="text/csv"
-    )
-
-
 elif page == "Documentation":
 
     st.markdown(
@@ -1755,4 +1694,5 @@ Address is a dynamic attribute and does not affect identity anchors.
 **Explanation**
 
 Assets and service records cannot replace identity anchors.
+
 """)
