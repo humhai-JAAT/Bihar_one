@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from docx import Document
 import base64
 from pathlib import Path
 import sys
@@ -1696,3 +1695,4 @@ Address is a dynamic attribute and does not affect identity anchors.
 Assets and service records cannot replace identity anchors.
 
 """)
+
