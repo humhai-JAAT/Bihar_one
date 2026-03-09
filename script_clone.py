@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-from docx import Document
+from python-docx import Document
 import base64
 from pathlib import Path
 import sys
@@ -1141,3 +1141,4 @@ elif page == "LUSR":
     st.dataframe(df_table_7, width='stretch', hide_index=True)
     
     # Download documentation
+
